@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universities and Courses</title>
+    <link rel="stylesheet" type="text/css" href="..\ug.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #edf6f9;
+            margin: 0;
+            padding: 0;
+            margin-top: 10px;
+
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .bullet {
+           
+    width: 100%;
+    max-width: 1000px;
+    background-color: #e9f0f1;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 400px rgb(146 36 237);
+    text-align: center;
+    margin: 200px auto;
+    height: 20vh;
+        }
+        .dropdown-bullet {
+            margin: 20px 0;
+
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 40px;
+            border: 2px solid rgb(146 36 237)
+            ;
+        }
+        .university, .course {
+    margin-left: ;
+    padding: 10px;
+    border: 2px solid #000000;
+    /* border-radius: 5px; */
+    cursor: pointer;
+    background-color: #673AB7;
+    color: white;
+    border-radius: 15px;
+        }
+        .university {
+            margin-left: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .course {
+            margin-left: 4px;
+        }
+        #country-dropdown{
+            background-color: #e8eeec;
+
+
+        }
+        h1{
+            color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #673AB7;
+    height: 5vh;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+	<header>
+        <div class="nav" id="nav">
+            <div id="learned-logo">
+                <a href="index.html"><img src="../../images/icon/Nist.berhampur.logo.jpg" style="width: 120px;"></a>
+
+            </div>
+            <u><li><a class="active" href="..\icms.html">Home</a></li></u>
+
+        </div>
+    </header>
+
+    <div class="bullet">
+        <h1>Universities and Courses</h1>
+        <div class="dropdown-bullet">
+            <select id="country-dropdown" onchange="onCountryChange()">
+                <option value="">Select a country...</option>
+            </select>
+        </div>
+<br>
+
+        
+        <div id="content">
+        </div>
+    </div>
+
+    <script>
+       
+        function populateCountryDropdown() {
+            const dropdown = document.getElementById("country-dropdown");
+
+            const sortedData = data.sort((a, b) => a.country.localeCompare(b.country));
+
+            sortedData.forEach((item) => {
+                const option = document.createElement("option");
+                option.value = item.country;
+                option.textContent = item.country;
+                dropdown.appendChild(option);
+            });
+        }
+        const data = [
+            { country: "Bolivia", universities: [
+                { name: "Instituto de Estudios Avanzados en Desarrollo (IEAD)", courses: ["Coca Cultivation and Cultural Significance"] },
+                { name: "Universidad Amazónica de Pando", courses: ["Ecological Conservation in the Amazon"] }
+            ]},
+            { country: "Paraguayan", universities: [
+                { name: "Instituto Superior de Música (ISM)", courses: ["Traditional Paraguayan Music Performance"] },
+                { name: "Universidad del Norte (UNINORTE)", courses: ["Paraguayan Literature and Creative Writing"] }
+            ]},
+            { country: "Costa Rica", universities: [
+                { name: "Universidad de Ciencias Médicas (UCIMED)", courses: ["Tropical Medicine"] },
+                { name: "Escuela de Diseño de la Universidad Veritas", courses: ["Sustainable Fashion Design"] }
+            ]},
+            { country: "Panamanian",universities: [
+                    {name: "Universidad Interamericana de Panamá",courses: ["Bilingual Education and Multiculturalism"]},
+                    {name: "Escuela de Negocios de la Universidad de Panamá",courses: ["Logistics and Supply Chain Management"] }
+            ]},
+            { country: "Guatemala",universities: [
+                    {name: "Universidad de San Carlos de Guatemala (USAC)",courses: ["Mayan Studies and Indigenous Cultures"]}
+            ]},           
+            { country: "Honduras",universities: [
+                    {name: "Instituto de Formación Profesional (INFOP)",courses: ["Culinary Arts and Traditional Honduran Cuisine"]},
+                    {name: "Universidad de Ciencias de la Salud (UCS)", courses: ["Tropical Medicine"]}
+            ]},
+            { country: "El Salvador",universities: [
+                    {name: "Universidad Centroamericana José Simeón Cañas (UCA)",courses: ["Peace Studies and Conflict Resolution"]},
+                    {name: "Instituto de Formación Profesional (INSAFORP)",courses: ["Culinary Arts focusing on Traditional Salvadoran Cuisine"]}
+            ]},
+            { country: "Nicaragua",universities: [
+                    {name: "Instituto Nicaragüense de Cultura Hispánica (INCH)",courses: ["Hispanic Literature and Cultural Studies"]}
+            ]},
+            { country: "Cuba",universities: [
+                    {name: "Escuela Internacional de Cine y Televisión (EICTV)",courses: ["Film and Television Production"]},
+                    {name: "Instituto Superior de Arte (ISA)",courses: ["Contemporary Dance and Choreography"]}
+            ]},
+            { country: "Dominican Republic",universities: [
+                    {name: "Universidad Central del Este (UCE)",courses: ["Agroecology and Sustainable Agriculture"]},
+                    {name: "Universidad Apec (UNAPEC)",courses: ["International Business with a focus on Caribbean Trade"]}
+            ]},
+            { country: "Philippines",universities: [
+                    {name: "University of the Philippines Los Baños",courses: ["Agribusiness Management"]},
+                    {name: "De La Salle-College of Saint Benilde",courses: ["Digital Filmmaking (AB in Communication Arts – Digital Media)"]}
+            ]},
+            { country: "China",universities: [
+                    {name: "Zhejiang University",courses: ["Tea Science"]},
+                    {name: "Tongji University (Shanghai)",courses: ["DUrban Planning and Development"]},
+                    {name: "Fudan University (Shanghai)",courses: ["Belt and Road Initiative Focus"]}
+            ]},
+            { country: "South Korea",universities : [
+                {name: "Korea Advanced Institute of Science and Technology (KAIST)",courses: ["Game Design and Game Development"]},
+                {name: "Kyung Hee University",courses: ["Korean Martial Arts and Taekwondo Studies"]},
+                {name: "Seoul National University",courses: ["Green Energy Technology"]}
+            ]},
+            { country: "Hong Kong",universities : [
+                {name: "The University of Hong Kong (HKU)",courses: ["Journalism and Media Studies","Global Creative Industries"]},
+                {name: "The Hong Kong Polytechnic University (PolyU)",courses: ["Aviation Engineering"]}
+            ]},
+            { country: "Russia",universities : [
+                {name: "Northern (Arctic) Federal University (NArFU)",courses: ["Arctic Studies"]},
+                {name: "National Research University Higher School of Economics (HSE)",courses: ["Cybersecurity for Critical Infrastructure"]},
+                {name: "Gubkin Russian State University of Oil and Gas",courses: ["Oil and Gas Engineering"]}
+            ]},
+            { country: "Georgia",universities : [
+                {name: "Caucasus International University",courses: ["Wine Technology and Viticulture"]},
+                {name: "Ilia State University",courses: ["Conflictology and Peace Studies"]},
+                {name: "Shota Rustaveli Theatre and Film Georgia State University",courses: ["Film and Media Studies"]},
+                {name: "Tbilisi State Academy of Arts",courses: ["Visual Arts and Design"]}
+            ]},
+            { country: "Iceland",universities : [
+                {name: "Iceland School of Energy (Reykjavik University)",courses: ["Geothermal Energy"]},
+                {name: "University of Iceland",courses: ["Viking and Medieval Norse Studies","Glaciology and Climate Change"]}
+            ]},
+            { country: "Ecuador",universities : [
+                {name: "Escuela Politécnica Nacional",courses: ["Tropical Ecology"]},
+                {name: "Universidad de Cuenca",courses: ["Andean and Amazonian Studies"]}
+            ]},
+            { country: "Venezuela",universities : [
+                {name: "Universidad Central de Venezuela (UCV)",courses: ["Petroleum Engineering"]},
+                {name: "Universidad Simón Bolívar",courses: ["Social Development"]}
+            ]},
+            { country: "Finland",universities : [
+                {name: "Aalto University, Finland",courses: ["Master's in Game Design and Production"]},
+                {name: "Tampere University, Finland",courses: ["Master's in Human-Technology Interaction"]}
+            ]},
+            { country: "Singapore",universities : [
+                {name: "Nanyang Technological University (NTU)",courses: ["Master of Digital Financial Technology"]},
+                {name: "Singapore Management University (SMU)",courses: ["Master of IT in Business (MITB) – Analytics Track"]}
+            ]},
+            { country: "Japan",universities : [
+                {name: "University of Tokyo",courses: ["Master’s in Robotics and Intelligent Systems"]},
+                {name: "Tokyo Institute of Technology (Tokyo Tech)",courses: ["Master’s in Nanoengineering"]}
+            ]},
+            { country: "Canada",universities : [
+                {name: "Centre for Digital Media (Vancouver)",courses: ["Master of Digital Media"]},
+                {name: "Dalhousie University",courses: ["Master of Sustainable Agriculture"]}
+            ]},
+            { country: "Netherlands",universities : [
+                {name: "Delft University of Technology (TU Delft)",courses: ["Master of Science in Offshore & Dredging Engineering"]},
+                {name: "University of Groningen",courses: ["Master’s in Global Criminal Law"]}
+            ]},
+            { country: "Germany",universities : [
+                {name: "Technical University of Munich (TUM)",courses: ["Master of Science in Robotics, Cognition, Intelligence"]},
+                {name: "Bernstein Center for Computational Neuroscience, Berlin",courses: ["Master in Computational Neuroscience"]}
+            ]},
+            { country: "United Kingdom",universities : [
+                {name: "Nottingham Trent University",courses: ["Master’s in Cyberpsychology"]},
+                {name: "University of Portsmouth",courses: ["Master of Science in Disaster Management and Sustainable Development"]}
+            ]},
+            { country: "Ireland",universities : [
+                {name: "University College Dublin (UCD)",courses: ["Master of Science in Biotherapeutics"]},
+                {name: "Trinity College Dublin",courses: ["Master of Science in Digital Health Transformation"]}
+            ]},
+            { country: "United States",universities : [
+                {name: "University of Chicago",courses: ["Master of Science in Computational Neuroscience"]},
+                {name: "University of Michigan",courses: ["Master of Science in Quantitative Finance and Risk Management"]}
+            ]},
+            { country: "Australia",universities : [
+                {name: "Australian National University (ANU)",courses: ["Master of Applied Cybernetics"]},
+                {name: "Griffith University",courses: ["Master of Design Futures"]}
+            ]},
+            { country: "New Zealand",universities : [
+                {name: "Massey University",courses: ["Master of Dairy Science and Technology"]},
+                {name: "University of Canterbury",courses: ["Master of Science in Earthquake Engineering"]}
+            ]},
+            { country: "Norway",universities : [
+                {name: "University of Oslo",courses: ["Master in Peace and Conflict Studies"]},
+                {name: "University of Stavanger",courses: ["Master in Geology (Petroleum Geosciences)"]}
+            ]},
+            { country: "Sweden",universities : [
+                {name: "Uppsala University",courses: ["Master's in Nordic Welfare"]}
+                
+            ]},
+
+
+
+
+
+        ];
+
+
+        function onCountryChange() {
+            const selectedCountry = document.getElementById("country-dropdown").value;
+            const selectedData = data.find(item => item.country === selectedCountry);
+            
+            if (selectedData) {
+                renderUniversities(selectedData.universities);
+            } else {
+                document.getElementById("content").innerHTML = ""; 
+            }
+        }
+
+        function renderUniversities(universities) {
+            const contentDiv = document.getElementById("content");
+            contentDiv.innerHTML = ""; 
+
+            universities.forEach((university) => {
+                const universityDiv = document.createElement("div");
+                universityDiv.classList.add("university");
+                universityDiv.textContent = university.name;
+                universityDiv.onclick = () => renderCourses(university.courses);
+
+                contentDiv.appendChild(universityDiv);
+            });
+        }
+
+        function renderCourses(courses) {
+            const contentDiv = document.getElementById("content");
+            contentDiv.innerHTML = ""; 
+            courses.forEach((course) => {
+                const courseDiv = document.createElement("div");
+                courseDiv.classList.add("course");
+                courseDiv.textContent = course;
+                courseDiv.onclick = () => redirectToCourseDetails(course);
+                contentDiv.appendChild(courseDiv);
+            });
+        }
+
+        function redirectToCourseDetails(courseName) {
+            window.location.href = `course-details.html?course=${encodeURIComponent(courseName)}`;
+        }
+
+        populateCountryDropdown();
+    </script>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+        <div class="left-col">
+            <div class="logo"></div>
+            <div class="social-media">
+                <a href="#"><img src="../../images/icon/fb.png"></a>
+                <a href="#"><img src="../../images/icon/insta.png"></a>
+                <a href="#"><img src="../../images/icon/tt.png"></a>
+                <a href="#"><img src="../../images/icon/ytube.png"></a>
+                <a href="#"><img src="../../images/icon/linkedin.png"></a>
+            </div><br><br>
+
+            <br>
+            <p><img src="../../images/icon/location.png">NIST University<br>Berhampur, Odisha-761008</p><br>
+            <p><img src="../../images/icon/phone.png"> +91-1234-567-890<br><img src="../../images/icon/mail.png">&nbsp;
+                learnedonline9419@gmail.com</p>
+        </div>
+        <div class="right-col">
+            <h1 style="color: #fff">Our Newsletter</h1>
+            <div class="border"></div><br>
+            <p>Enter Your Email to get our News and updates.</p>
+            <form class="newsletter-form">
+                <input class="txtb" type="email" placeholder="Enter Your Email">
+                <input class="btn" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
